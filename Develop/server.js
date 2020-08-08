@@ -19,7 +19,10 @@ require("./routes/api-routes.js")(app)
 require("./routes/html-routes.js")(app)
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitnesstrackerdb", { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitnesstrackerdb", { 
+    useNewUrlParser: true,
+    useFindAndModify: false
+ });
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);

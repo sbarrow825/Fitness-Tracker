@@ -11,7 +11,7 @@ const WorkoutSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    duration: {
+    workoutDuration: {
         type: Number,
         default: 0
     }

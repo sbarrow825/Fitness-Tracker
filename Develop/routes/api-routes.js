@@ -14,10 +14,10 @@ module.exports = function (app) {
         });
     });
 
-    app.put("/api/workouts/:id", async ({body}, res) => {
+    app.put("/api/workouts/:id", async (req, res) => {
         db.Workout.findOneAndUpdate({ _id: Mongoose.Types.ObjectId(req.params.id) }, {
             $push: {
-                exercises: body
+                exercises: req.body
             }
         }).then(data => {
             res.json(data)
