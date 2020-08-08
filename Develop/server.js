@@ -8,8 +8,6 @@ const PORT = process.env.port || 3000
 
 const app = express()
 
-app.use(logger("dev"));
-
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
@@ -19,9 +17,10 @@ require("./routes/api-routes.js")(app)
 require("./routes/html-routes.js")(app)
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitnesstrackerdb", { 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", { 
     useNewUrlParser: true,
-    useFindAndModify: false
+    useFindAndModify: false,
+    useUnifiedTopology: true
  });
 
 app.listen(PORT, () => {
